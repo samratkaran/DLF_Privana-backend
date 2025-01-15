@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 // Use the port from environment, or fallback to 5000 for local development
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 // CORS configuration (allowing all origins for testing)
 app.use(cors({
@@ -48,7 +48,7 @@ app.post('/form', (req, res) => {
 
     const mailOptions = {
         from: 'karan@ebaseinfra.com',  // Sender email
-        to: 'info@ebaseinfra.com',     // Recipient email
+        to: 'ebaseinfratech@gmail.com',     // Recipient email
         subject: 'DLF Privana North Enquiry',
         html:`<table width='60%' style='border:1px solid black;'>
                   <th style='background-color:#0051A4;color:#FFFFFF;text-align: center;'>Description</th>
