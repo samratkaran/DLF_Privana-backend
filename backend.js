@@ -27,6 +27,10 @@ const pass = process.env.EMAIL_PASS;
 app.get("/", (req, res) => {
     res.send("Welcome to the backend! It's running properly.");
 });
+app.get("/check", (req, res) => {
+  res.send("Welcome to the Check Route.");
+});
+
 
 // POST route to handle form submissions
 app.post('/form', (req, res) => {
