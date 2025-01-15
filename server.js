@@ -79,7 +79,7 @@ app.post('/form', (req, res) => {
 // Start the server (Hostinger will automatically handle the port)
 app.listen(process.env.PORT, async () => {
     try {
-      console.log(`Listening at port ${process.env.port}`);
+      console.log(`Listening at port ${process.env.PORT}`);
     } catch (error) {
       console.log(error);
     }
