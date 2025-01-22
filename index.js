@@ -34,7 +34,8 @@ app.get("/check", (req, res) => {
 
 // POST route to handle form submissions
 app.post('/form', (req, res) => {
-    const { name, number } = req.body;
+  const { name, number, subject } = req.body; // Receive subject from frontend
+
     console.log(`Received Name: ${name}, Phone Number: ${number}`);
 
     // Example of sending email using Nodemailer
@@ -47,26 +48,25 @@ app.post('/form', (req, res) => {
     });
 
     const mailOptions = {
-        from: 'karan@ebaseinfra.com',  // Sender email
-        to: 'ebaseinfratech@gmail.com',     // Recipient email
-        subject: 'DLF Privana North Enquiry',
-        html:`<table width='60%' style='border:1px solid black;'>
-                  <th style='background-color:#0051A4;color:#FFFFFF;text-align: center;'>Description</th>
-                  <th style='background-color:#0051A4;color:#FFFFFF;text-align: center;'>Value</th>
-          
-                  <tr style='background-color:#AAD4FF;'>
-                    <td width='65%'>Name</td>
-                    <td>${name}</td>
-                  </tr>
-                  
-                  <tr style='background-color:#AAD4FF;'>
-                    <td width='65%'>Phone</td>
-                    <td>${number}</td> 
-                  </tr>
-                  
-                 
-                  </table>`,
-    };
+      from: 'karan@ebaseinfra.com', // Sender email
+      to: 'ebaseinfratech@gmail.com', // Recipient email
+      subject: subject || 'property enquiry', // Use the subject from frontend
+      html: `<table width='60%' style='border:1px solid black;'>
+                <th style='background-color:#0051A4;color:#FFFFFF;text-align: center;'>Description</th>
+                <th style='background-color:#0051A4;color:#FFFFFF;text-align: center;'>Value</th>
+        
+                <tr style='background-color:#AAD4FF;'>
+                  <td width='65%'>Name</td>
+                  <td>${name}</td>
+                </tr>
+                
+                <tr style='background-color:#AAD4FF;'>
+                  <td width='65%'>Phone</td>
+                  <td>${number}</td> 
+                </tr>
+            </table>`,
+  };
+  
 
     // Sending email
     transporter.sendMail(mailOptions, (error, info) => {
