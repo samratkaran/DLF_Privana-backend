@@ -10,11 +10,14 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // CORS configuration (allowing all origins for testing)
-app.use(cors({
-    origin: '*',  // Allow all origins for now (can be restricted in production)
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type'],
-}));
+// app.use(cors({
+//     origin: '*',  // Allow all origins for now (can be restricted in production)
+//     methods: ['GET', 'POST', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type'],
+// }));
+app.use(cors());
+app.options('*', cors()); // Allow preflight across all routes
+
 
 // Middleware for parsing JSON and form data
 app.use(express.json());
